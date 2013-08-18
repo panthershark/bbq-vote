@@ -1,0 +1,31 @@
+{
+  "name": "bbq-vote",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "tape tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tommydudebreaux/bbq-vote.git"
+  },
+  "dependencies": {
+    "bootstrap": "git+https://github.com/twbs/bootstrap.git#v3.0.0-rc1",
+    "mixdown-less": "~0.1.0",
+    "mixdown-router": "~0.2.8",
+    "mixdown-server": "0.5.4",
+    "mixdown-plugins": "2.2.6",
+    "mixdown-pipelines": "0.0.2",
+    "broadway-handlebars": "~0.2.2",
+
+    "lodash": "1.3.x",
+    "cookies-js": "0.3.1",
+    "hammerjs": "1.0.5"
+  },
+  "devDependencies": {
+    "tape": "*"
+  },
+  "author": "totally.bro@gmail.com",
+  "license": "MIT"
+}

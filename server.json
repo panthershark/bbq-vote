@@ -1,0 +1,216 @@
+{
+  "app": {
+    "plugins": {
+      "router": {
+        "module": "/plugins/router.js",
+        "options": {
+          "timeout": 10000,
+          "routes": {
+            "voteApi": {
+              "method": "GET",
+              "name": "voteApi",
+              "path": "/api/votes",
+              "description": "Gets all the votes",
+              "handler": "voteApi",
+              "params": {},
+              "enabled": true
+            },
+            "castVote": {
+              "method": "POST",
+              "name": "castVote",
+              "path": "/api/vote/cast",
+              "description": "Casts a vote",
+              "handler": "castVote",
+              "params": {},
+              "enabled": true
+            },
+            "image": {
+              "method": "GET",
+              "name": "image",
+              "path": "/img/:image_src",
+              "description": "Gets a static image.",
+              "handler": "image",
+              "timeout": 6000,
+              "params": {
+                "image_src": {
+                  "regex": "([.-\\w\/@]+)",
+                  "kind": "rest",
+                  "enabled": true
+                },
+                "v": {
+                  "regex": "([\\w\\.-]+)",
+                  "kind": "query",
+                  "description": "cachebuster",
+                  "enabled": true
+                }
+              },
+              "enabled": true
+            },
+            "css": {
+              "method": "GET",
+              "name": "css",
+              "path": "/css/:css_src",
+              "description": "Returns a css file.",
+              "handler": "css",
+              "timeout": 6000,
+              "params": {
+                "css_src": {
+                  "regex": "([.-\\w]+\\.css)",
+                  "kind": "rest",
+                  "enabled": true
+                },
+                "v": {
+                  "regex": "([\\w\\.-]+)",
+                  "kind": "query",
+                  "description": "cachebuster",
+                  "enabled": true
+                }
+              },
+              "enabled": true
+            },
+            "js": {
+              "method": "GET",
+              "name": "js",
+              "path": "/js/:js_src",
+              "description": "Returns a javascript file.",
+              "handler": "js",
+              "params": {
+                "js_src": {
+                  "regex": "([.-\\w]+\\.js)",
+                  "kind": "rest",
+                  "enabled": true
+                },
+                "v": {
+                  "regex": "([\\w\\.-]+)",
+                  "kind": "query",
+                  "description": "cachebuster",
+                  "enabled": true
+                }
+              },
+              "enabled": true
+            },
+            "templateApi": {
+              "method": "GET",
+              "name": "templateApi",
+              "path": "/api/templates",
+              "description": "Returns the templates for application.",
+              "handler": "templates",
+              "params": {},
+              "enabled": true
+            },
+            "home": {
+              "method": "GET",
+              "name": "home",
+              "path": "/",
+              "description": "Home page.",
+              "handler": "page",
+              "params": {},
+              "enabled": true
+            },
+            "voteList": {
+              "method": "GET",
+              "name": "voteList",
+              "path": "/votes",
+              "description": "List of votes.",
+              "handler": "page",
+              "params": {},
+              "enabled": true
+            },
+            "manifest": {
+              "method": "GET",
+              "name": "manifest",
+              "path": "/manifest",
+              "description": "List of all of the routes available on this site.",
+              "handler": "manifest",
+              "params": {},
+              "enabled": true
+            }
+          }
+        }
+      },
+      "view": {
+        "module": "broadway-handlebars",
+        "options": {
+          "optimize": false,
+          "development": true,
+          "view": {
+            "base": [
+              "./views"
+            ],
+            "ext": "html"
+          }
+        }
+      },
+      "less": {
+        "module": "mixdown-less",
+        "options": {
+          "compress": false,
+          "paths": [ "./less", "./less/bootstrap", "./less/partials", "../" ]
+        }
+      },
+      "json": {
+        "module": "mixdown-plugins#Json"
+      },
+      "static": {
+        "module": "mixdown-plugins#Static",
+        "options": {
+          "headers": {}
+        }
+      },
+      "pipelines": {
+        "module": "mixdown-pipelines"
+      },
+      "error": {
+        "module": "mixdown-plugins#Error"
+      },
+      "browserify": {
+        "module": "mixdown-plugins#Browserify",
+        "options": {
+          "compress": false,
+          "ignore": [
+            "./viewresolver",
+            "crypto",
+            "fs",
+            "file"
+          ],
+          "alias": {
+            "underscore": "lodash"
+          }
+        }
+      }
+    }
+  },
+  "sites": [
+    {
+      "id": "bbq",
+      "hostmap": [
+        "bbq-local.com"
+      ],
+      "plugins": {
+      }
+    }
+  ],
+  "server": {
+    "listen": {
+      "port": 8081,
+      "type": "tcp"
+    },
+    "logger": {
+      "defaults": {
+        "handleExceptions": false,
+        "json": false,
+        "timestamp": true,
+        "colorize": true,
+        "prettyPrint": true
+      },
+      "transports": [
+        {
+          "transport": "Console",
+          "options": {
+            "level": "debug"
+          }
+        }
+      ]
+    }
+  }
+}

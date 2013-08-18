@@ -1,0 +1,92 @@
+//
+// Grid system
+// --------------------------------------------------
+
+// Set the container width, and override it for fixed navbars in media queries
+#bbq-container {
+  width: 100%;
+}
+
+// Mobile-first defaults
+@main-columns:          12;
+/*@left-columns:          12;
+*/
+/*.column {
+  float: left;
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
+*/
+/* Phones (mobile first) */
+#bbq-main {
+  .vast-make-column(@main-columns);
+  display: inline;
+  padding: 0;
+}
+
+#bbq-left {
+  .vast-make-column(@main-columns);
+  background-color: @brand-primary; 
+  position: absolute;
+  .transition(all 0.3s ease 0s);
+  display: none;
+  z-index: 2;
+  height: 100%;
+  border: solid 1px @gray-lighter;
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+}
+
+
+// Small device columns (phones to tablets)
+@main-columns:          12;
+@left-columns:          8;
+
+@media (min-width: @screen-tablet) {
+
+  #bbq-main {
+    .make-column(@main-columns);
+  }
+
+  #bbq-left {
+    .make-column(@left-columns);
+  }
+
+}
+
+// Medium and large device columns (desktop and up)
+@main-columns:          12;
+@left-columns:          4;
+@media (min-width: @screen-desktop) {
+
+  #bbq-main {
+    .make-column(@main-columns);
+  }
+
+  #bbq-left {
+    .make-column(@left-columns);
+  }
+
+}
+
+// Large desktops and up
+@main-columns:          12;
+@left-columns:          4;
+@media (min-width: @screen-large-desktop) {
+
+  body {
+    margin: 8px;
+  }
+
+  #bbq-main {
+    .make-column(@main-columns);
+  }
+
+  #bbq-left {
+    .make-column(@left-columns);
+  }
+
+}

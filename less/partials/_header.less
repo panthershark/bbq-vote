@@ -1,0 +1,139 @@
+.icon-bar() {
+  background-color: @gray-darker;
+  display: block;
+  width: 22px;
+  height: 4px;
+  border-radius: 1px;
+  margin: 6px 8px;
+}
+
+header {
+  height: @toolbar-height;
+  background: url("/img/logo.png") @brand-primary no-repeat 0 10px;
+
+  h1 {
+    float: left;
+    text-indent: -119988px;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  button.menu {
+    position: relative;
+    float: right;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+
+    /* would be cool if bootstrap would embrace mixins instead of hard coding styles */
+    span {
+      .icon-bar
+    }
+  }
+
+  button.menu.selected {
+    background-color: lighten(@brand-primary, 5%);
+    border: 1px solid darken(@brand-primary, 25%);
+    border-radius: 4px;
+  }
+
+  nav {
+    .transition(all 0.3s ease 0s);
+    display: none;
+    position: absolute;
+    top: @toolbar-height;
+    background-color: lighten(@brand-primary, 5%);
+    float: right;
+    z-index: 2;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        border: 1px solid darken(@brand-primary, 25%);
+
+        button {
+          .btn();
+          .btn-primary();
+          color: @text-color;
+          margin: 0.5em 1em;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: @font-size-large;
+          letter-spacing: 1px;
+          #gradient.vertical(@start-color: @brand-primary; @start-percent: 0%; @end-color: darken(@brand-primary, 10%); @end-percent: 100%);
+        }
+
+        button.filter {
+          padding-left: 60px;
+          background: url("/img/header/filter@2x.png") no-repeat 0 -5px;
+          background-size: 40% auto;
+        }
+        button.share {
+          padding-left: 60px;
+          background: url("/img/header/share@2x.png") no-repeat 4px 3px;
+          background-size: 40% auto;
+        }
+      }
+    }
+  }
+
+  nav.visible {
+    display: block;
+    width: 100%;
+
+    button {
+      width: 90%;
+    }
+
+    button.cast-vote {
+      padding-left: 60px;
+      background: url("/img/header/filter@2x.png") no-repeat 0 -5px;
+      background-size: 15% auto;
+    }
+    button.share {
+      padding-left: 60px;
+      background: url("/img/header/share@2x.png") no-repeat 4px 3px;
+      background-size: 15% auto;
+    }
+
+  }
+}
+
+@media (min-width: @screen-tablet) {
+
+  header {
+    background: url("/img/logo.png") @brand-primary no-repeat 0 16px;
+
+
+    button.menu {
+      display: none;
+    }
+    nav {
+      position: relative;
+      top: 0;
+      display: block;
+      background-color: transparent;
+
+      ul {
+
+        li {
+          border: none;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: @screen-medium) {
+
+}
+
+@media (min-width: @screen-large-desktop) {
+
+
+}

@@ -1,0 +1,24 @@
+@import "node_modules/bootstrap/less/normalize.less"; 
+@import "less/bootstrap/variables.less"; 
+@import "node_modules/bootstrap/less/mixins.less"; 
+@import "less/bootstrap/buttons.less"; 
+
+/* This is the main entry point for css.  It sets the global layout, global media queries, and imports partials */
+
+body {
+  margin: 0;
+  background: url("/img/chapter-detail-background@2x.png") @brand-primary;
+  color: @text-color;
+}
+
+
+#bbq-container.show-left {
+  #vast-left {
+    display: block;
+  }
+}
+
+/* Partial imports here */
+@import "partials/_layout.less"; 
+@import "partials/_header.less"; 
+@import "partials/_vote.less"; 

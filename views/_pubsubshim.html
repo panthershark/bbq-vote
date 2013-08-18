@@ -1,0 +1,11 @@
+<script>
+  // shim pubsub until main script loads async.
+  window.eventEmitter = {
+    _events: {},
+    on: function(name, fn) {
+      var ev = window.eventEmitter._events[name];
+      if (!ev) { window.eventEmitter._events[name] = ev = []; }
+      ev.push(fn);
+    }
+  };
+</script>

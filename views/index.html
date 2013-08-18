@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{> _meta}}
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <link rel="apple-touch-icon-precomposed" href="{{url "image" image_src="icons/Icon.png"}}">
+  <link rel="apple-touch-icon-precomposed" href="{{url "image" image_src="icons/Icon~ipad.png"}}" sizes="72x72">
+  <link rel="apple-touch-icon-precomposed" href="{{url "image" image_src="icons/Icon@2x.png"}}" sizes="114x114">
+  <link rel="apple-touch-icon-precomposed" href="{{url "image" image_src="icons/Icon~ipad@2x.png"}}" sizes="144x144">
+  <link rel="apple-touch-startup-image" href="{{url "image" image_src="startup/320x460.jpg"}}">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="{{url "css" css_src="screen.css"}}" />
+
+  {{! TODO - router or url not liking .ico}}
+  <link rel="shortcut icon" href="{{url "image" img_src="favicon.ico"}}" />
+
+  {{> _pubsubshim }}
+
+  <script>
+  // When ready...
+  window.addEventListener("load",function() {
+    // Set a timeout...
+    setTimeout(function(){
+      // Hide the address bar!
+      window.scrollTo(0, 1);
+    }, 0);
+  });
+
+  window.eventEmitter.on('bbq-load', function(app) {
+    window.$ = window.jQuery = app.$;
+  });
+  window.eventEmitter.on('bbq-error', function(data) {
+    console.error(data);
+  });
+  window.eventEmitter.on('bbq-log', function(data) {
+    console.log(data);
+  });
+  </script>
+</head>
+
+<body>
+
+  <div id="bbq-container">
+    {{> header._header }}
+
+    <section id="off-canvas">
+        <section id="bbq-left" class="column">
+          <div style="height: 400px">
+          <p>
+            Quisque accumsan turpis id orci ornare rutrum. Cras quis dapibus massa, id dictum turpis. Curabitur euismod sapien vestibulum turpis porta gravida. Maecenas ultrices viverra ipsum, et imperdiet neque pretium vitae. In eu diam libero. Nam luctus purus sit amet odio vehicula mollis. Aliquam at tortor congue, ornare nulla sit amet, egestas est.
+          </p>
+        </div>
+
+        </section>
+        <section id="bbq-main" class="column">
+          <div class="srp-cards">
+          {{> srp._card }}
+          {{> srp._card }}
+          {{> srp._card }}
+          {{> srp._card }}
+          {{> srp._card }}
+          {{> srp._card }}
+          </div>
+        </section>
+    </section>
+
+    {{! no footer please}}
+    <footer></footer>
+  </div>
+  
+  <script>
+  window.bbq = { 
+    plugins: {{{json plugins}}}
+  };
+  </script>
+
+  <script src="{{url "js" js_src="main.js"}}"></script>
+</body>
+</html>
