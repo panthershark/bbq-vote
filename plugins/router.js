@@ -51,7 +51,7 @@ Router.prototype.voteApi = function(httpContext) {
   var app = httpContext.app;
   var res = httpContext.response;
 
-  app.plugins.votes.get({}, function(err, data) {
+  app.plugins.votes.all(function(err, data) {
 
     if (err) {
       app.plugins.error.fail(err, res);
@@ -84,6 +84,40 @@ Router.prototype.page = function(httpContext) {
 
   });
 
+};
+
+
+Router.prototype.castVote = function(httpContext) {
+  var app = httpContext.app;
+  var res = httpContext.response;
+  var headers = app.config.plugins.static.options.headers;
+
+  // userid - id of user
+  // choice - what did they choose?
+
+  app.plugins.users.getUser(httpContext.params.userid, function(err, user) {
+
+    if (err) {
+      app.plugins.error.fail(err, res);
+      return;
+    }
+
+    var fields = {
+      user: user,
+      choice: httpContext.params.choice
+    };
+
+    app.plugins.votes.update(user.userid, fields, function(err) {
+      if (err) {
+        app.plugins.error.fail(err, res);
+        return;
+      }
+
+      app.plugins.json({ status: 'ok' }, res, headers);
+
+    });
+
+  });
 };
 
 Router.prototype.image = function(httpContext) {

@@ -128,8 +128,16 @@
           }
         }
       },
+      "votes": {
+        "module": "/plugins/votes.js",
+        "options": {
+          "host": "this lives in env config not public github",
+          "auth": { "username": "this lives in env config not public github", "password": "this lives in env config not public github" },
+          "database": "this lives in env config not public github"
+        }
+      },
       "view": {
-        "module": "broadway-handlebars",
+        "module": "/plugins/render.js",
         "options": {
           "optimize": false,
           "development": true,

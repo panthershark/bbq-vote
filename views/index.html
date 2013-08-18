@@ -60,13 +60,10 @@
 
         </section>
         <section id="bbq-main" class="column">
-          <div class="srp-cards">
-          {{> srp._card }}
-          {{> srp._card }}
-          {{> srp._card }}
-          {{> srp._card }}
-          {{> srp._card }}
-          {{> srp._card }}
+          <div class="votes">
+          {{#each votes}}
+            {{> votes._vote value}}
+          {{/each}}
           </div>
         </section>
     </section>
@@ -76,7 +73,7 @@
   </div>
   
   <script>
-  window.bbq = { 
+  window.BBQ = { 
     plugins: {{{json plugins}}}
   };
   </script>

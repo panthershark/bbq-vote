@@ -1,5 +1,9 @@
+.votes {
+  /* container for .vote elements */
+}
+
 .vote {
-  .vast-make-column(@main-columns);
+  .make-column(@main-columns);
   padding: 0.8em 0;
 
   div {
@@ -25,15 +29,15 @@
 
 
 @media (min-width: @screen-tablet) {
-  .card {
-    .vast-make-column(@main-columns * 0.48);
+  .vote {
+    .make-column(@main-columns * 0.48);
     padding: 2em 0;
   }
 }
 
 @media (min-width: @screen-large-desktop) {
-  .card {
-    .vast-make-column(@main-columns * 0.3);
+  .vote {
+    .make-column(@main-columns * 0.3);
     padding: 2em 0;
   }
 }

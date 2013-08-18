@@ -9,14 +9,15 @@
 
 header {
   height: @toolbar-height;
-  background: url("/img/logo.png") @brand-primary no-repeat 0 10px;
+  #gradient.vertical(@start-color: @brand-primary; @start-percent: 0%; @end-color: #FFC700; @end-percent: 100%);
+
 
   h1 {
     float: left;
-    text-indent: -119988px;
+    /*text-indent: -119988px;*/
     margin: 0;
-    padding: 0;
-
+    padding: 0.4em 0.2em;
+    color: @gray-darker;
   }
 
   button.menu {
@@ -65,9 +66,13 @@ header {
           font-size: @font-size-large;
           letter-spacing: 1px;
           #gradient.vertical(@start-color: @brand-primary; @start-percent: 0%; @end-color: darken(@brand-primary, 10%); @end-percent: 100%);
+        
+          &:hover,{             
+            border: 1px solid @gray-darker;
+          }
         }
 
-        button.filter {
+        button.cast-vote {
           padding-left: 60px;
           background: url("/img/header/filter@2x.png") no-repeat 0 -5px;
           background-size: 40% auto;
@@ -85,6 +90,9 @@ header {
     display: block;
     width: 100%;
 
+    li {
+      background-color: #ffffff;
+    }
     button {
       width: 90%;
     }
@@ -106,8 +114,6 @@ header {
 @media (min-width: @screen-tablet) {
 
   header {
-    background: url("/img/logo.png") @brand-primary no-repeat 0 16px;
-
 
     button.menu {
       display: none;
